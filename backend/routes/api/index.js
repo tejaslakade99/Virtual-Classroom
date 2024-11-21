@@ -6,5 +6,8 @@ router.get("/", (req, res) => {
 });
 
 router.use('/students', require('./Students'))
+router.use('/teachers', require('./Teachers'))
+router.use('/class', require('./Class'))
+router.use('/user', require('./User'))
 
 module.exports = router;
