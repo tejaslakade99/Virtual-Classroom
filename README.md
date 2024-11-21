@@ -1,3 +1,4 @@
+
 # Internship Assignment - Build a School Management System
 
 ## Objective:
@@ -17,8 +18,27 @@ Develop a backend API to manage a school system with features for managing stude
 ## API Endpoints
 
 ### User Routes
+- **POST** `/api/user/create-session` - Create the session.
+  - Request Body:
+    ```json
+    {
+      "email": "john@example.com",
+      "password": "password123"
+    }
+    ```
+  - Response: 
+    ```json
+    {
+    "message": "Logged In.Token is Generated.",
+    "data": {
+        "token": "{generatedtoken}"
+            }
+    }
+    ```
+  - **NOTE:** To create the first user, please follow the instructions provided in the User.js file.
+
 - **POST** `/api/user/create-user` - Create the first user
-  - Authorization: Bearer token (JWT) is required in the      Authorization header for the request.
+  - Authorization: Bearer token (JWT) is required in the      Authorization header for the request and expires in 2min.
   - Request Body:
     ```json
     {
@@ -103,7 +123,7 @@ Develop a backend API to manage a school system with features for managing stude
 ### Teacher Routes
   
 - **POST** `/api/teacher/create-teacher` - Create teacher.
-    - Authorization: Bearer token (JWT) is required in the      Authorization header for the request.
+    - Authorization: Bearer token (JWT) is required in the      Authorization header for the request and expires in 2min.
     -  Request Body:
     ```json
     {
@@ -137,7 +157,7 @@ Develop a backend API to manage a school system with features for managing stude
 ### Class Routes
   
 - **POST** `/api/class/create-class` - Create class.
-    - Authorization: Bearer token (JWT) is required in the      Authorization header for the request.
+    - Authorization: Bearer token (JWT) is required in the      Authorization header for the request and expires in 2min.
     -  Request Body:
     ```json
     {
@@ -160,7 +180,7 @@ Develop a backend API to manage a school system with features for managing stude
     }   
     ```
 - **PATCH** `/api/class/assign-teacher` - Create class.
-    - Authorization: Bearer token (JWT) is required in the      Authorization header for the request.
+    - Authorization: Bearer token (JWT) is required in the      Authorization header for the request and expires in 2min.
     -  Request Body:
     ```json
     {
@@ -220,3 +240,14 @@ Develop a backend API to manage a school system with features for managing stude
     ```
 - **GET** `/api/exam/exam-result/:id` - Get results of specific exam.
 - **GET** `/api/exam/student-result/:id` - Get results of specific student.
+
+## Additional Features:
+- JWT-based authentication for admin access.
+- Protect routes to ensure only authorized users can perform operations.
+- Allow uploading and updating profile images for students and teachers using Cloudinary.
+- Handle common errors like duplicate entries, invalid data, etc.
+
+## Bonus Features (Optional):
+- Implement attendance tracking for students in each class.
+- Add a feature for managing exams and results for students.
+- Generate a report for a class with a list of students and the assigned teacher.
